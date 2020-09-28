@@ -10,4 +10,7 @@ public class HalloJavamitForEach {
             System.out.println(s);
         }
     }
+    public void forEachwithinterface(){
+    list.forEach(System.out::println);
+    }
 }
