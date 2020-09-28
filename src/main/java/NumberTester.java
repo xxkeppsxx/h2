@@ -39,7 +39,8 @@ public class NumberTester {
     this.primeTester = primeTester;
     }
     public void setPalindromeTester(NumberTest palindromeTester){
-    
+
+        
     }
     public void testFile(){
 
