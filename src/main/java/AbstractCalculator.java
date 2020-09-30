@@ -1,2 +1,2 @@
-public class AbstractCalculator {
+public abstract class AbstractCalculator {
 }
