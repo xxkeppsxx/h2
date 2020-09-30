@@ -2,14 +2,15 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class NumberTester {
-    int numberOfTests;
-    Map<Integer, Integer> numbers = new HashMap<>();
+
+    ArrayList<Operation> list = new ArrayList<>();
 
 
     public NumberTester(String fileName) {
@@ -17,10 +18,14 @@ public class NumberTester {
             BufferedReader br = new BufferedReader(new FileReader(new File(fileName)));
             String line = br.readLine();
             line = br.readLine();
-            while (line != null) {
-                String[] splitted = line.split(" ");
-                numbers.put(Integer.parseInt(splitted[1]), Integer.parseInt(splitted[0]));
-                line = br.readLine();
+            while (line != null ) {
+                if(!line.isEmpty()){
+                    String[] splitted = line.split(" ");
+                    Operation op = new Operation(Integer.parseInt(splitted[0]), Integer.parseInt(splitted[1]));
+                    list.add(op);
+                    line = br.readLine();
+                }
+
             }
             br.close();
         } catch (IOException ex) {
@@ -45,21 +50,21 @@ public class NumberTester {
     }
 
     public void testFile() {
-        for (int i : numbers.keySet()) {
-            if (i == 1) {
-                if (oddTester.testNumber(numbers.get(i))) {
+        for ( Operation op: list) {
+            if (op.n1 == 1) {
+                if (oddTester.testNumber(op.n2)) {
                     System.out.println("EVEN");
                 } else {
                     System.out.println("UNEVEN");
                 }
-            } else if (i == 2) {
-                if (primeTester.testNumber(numbers.get(i))) {
+            } else if (op.n1 == 2) {
+                if (primeTester.testNumber(op.n2)) {
                     System.out.println("PRIME");
                 } else {
                     System.out.println("NOTPRIME");
                 }
-            } else if (i == 3) {
-                if(palindromeTester.testNumber(numbers.get(i))) {
+            } else if (op.n1== 3) {
+                if(palindromeTester.testNumber(op.n2)) {
                     System.out.println("PALINDROME");
                 }else{
                     System.out.println("NON PALINDROME");
