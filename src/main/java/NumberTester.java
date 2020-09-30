@@ -32,7 +32,7 @@ public class NumberTester {
             Logger.getLogger(NumberTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+""
     NumberTest oddTester;
     NumberTest primeTester;
     NumberTest palindromeTester;
