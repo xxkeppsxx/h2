@@ -20,9 +20,26 @@ public class CalcMain {
             return new Number(x.getA() - y.getA(), x.getB() - y.getB());
 
         },(Number x,Number y) -> {
-            return new Number((x.getA() *y.getB()) - (x.getB()* y.getB()),0);
-        },
+            Number v1 = new Number(x.getA(),y.getA());
+            Number v2 = new Number(x.getB(),y.getB());
+            return new Number((v1.getA()*v1.getB()) + (v2.getA()* v2.getB()),0);
+        },(Number x,Number y)-> {
+            Number v1 = new Number(x.getA(),y.getA());
+            Number v2 = new Number(x.getB(),y.getB());
+            return new Number((v1.getA()*v1.getB()) - (v2.getA()* v2.getB()),0);
 
+        });
+
+        ComplexCalculator cc = new ComplexCalculator((Number x,Number y)-> {
+            return new Number(x.getA() + y.getA(), x.getB() + y.getB());
+        },(Number x,Number y)-> {
+            return new Number(x.getA() - y.getA(), x.getB() - y.getB());
+
+        },(Number x,Number y)-> {
+
+        },(Number x, Number y)->{
+            Number c1 = new Number()
+        },
         });
 
     }
