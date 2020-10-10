@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class NumberTester {
-
+Operation op;
     ArrayList<Operation> list = new ArrayList<>();
 
 
@@ -18,13 +18,16 @@ public class NumberTester {
             BufferedReader br = new BufferedReader(new FileReader(new File(fileName)));
             String line = br.readLine();
             line = br.readLine();
-            while (line != null ) {
-                if(!line.isEmpty()){
+            while (line != null  ) {
+                if(line.trim().equals("")){
+                    line = br.readLine();
+                    continue;
+                }
                     String[] splitted = line.split(" ");
-                    Operation op = new Operation(Integer.parseInt(splitted[0]), Integer.parseInt(splitted[1]));
+                     op = new Operation(Integer.parseInt(splitted[0]), Integer.parseInt(splitted[1]));
                     list.add(op);
                     line = br.readLine();
-                }
+
 
             }
             br.close();
@@ -32,7 +35,7 @@ public class NumberTester {
             Logger.getLogger(NumberTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-""
+
     NumberTest oddTester;
     NumberTest primeTester;
     NumberTest palindromeTester;
