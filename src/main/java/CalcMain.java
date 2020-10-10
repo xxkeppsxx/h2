@@ -38,8 +38,18 @@ public class CalcMain {
         },(Number x,Number y)-> {
 
         },(Number x, Number y)->{
-            Number c1 = new Number()
-        },
+            Number c1 = new Number(x.getA()*y.getA(),x.getA()*y.getB());
+            Number c2 = new Number(x.getB()*y.getA(),x.getB()*y.getB());
+            return new Number(c1.getA()+ c2.getB()*(-1),c1.getB()+c2.getA());
+        },(Number x,Number y)->{
+            Number c1 = new Number(x.getA()*y.getA(),x.getA()*y.getB()*(-1));
+            Number c2 = new Number(x.getB()*y.getA(),x.getB()*y.getB()*(-1));
+            Number c1Undc2 = new Number(c1.getA() + c2.getB()*(-1), c1.getB() + c2.getA());
+            Number a1 = new Number(y.getA()*y.getA(),y.getA()*y.getB() +(-1));
+            Number a2 = new Number(y.getB()*y.getA(),y.getB()*y.getB() +(-1));
+            Number a1Unda2 = new Number(a1.getA()* a2.getB()*(-1),0);
+            return new Number(c1Undc2.getA()/a1Unda2.getA(),c1Undc2.getB()/a1Unda2.getA());
+
         });
 
     }
